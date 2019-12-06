@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::inRandomOrder()->paginate(5);
+        $questions = Question::with('user')->inRandomOrder()->paginate(5);
         return view('questions.index',compact('questions'));
     }
 
