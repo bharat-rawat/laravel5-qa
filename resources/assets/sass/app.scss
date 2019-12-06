@@ -12,3 +12,33 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+.counters{
+  padding-right: 30px;
+  font-size: 10px;
+  text-align: center;
+  strong{
+    display: block;
+    font-size: 1.5rem;
+  }
+  
+  .vote, .answers{
+    width: 60px;
+    height: 60px;
+  }
+  .status{
+    &.answered{
+      border: 1px solid $color-green;
+      color: $color-green;
+    }
+    &.answer-accepted{
+      background: $color-green;
+      color: #fff;
+    }
+    &.unanswered{
+      border: none;
+    }
+  }
+  .view{
+    margin-top:10px;
+  }
+}
