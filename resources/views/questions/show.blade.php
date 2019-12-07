@@ -32,10 +32,10 @@
                             <div class="media-body">
                                 <div class="d-flex align-items-center">
                                     <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
-                                    @if(Auth::user()->can('update-question',$question))
-                                    <div class="ml-auto">
-                                        <a href="{{route('question.edit',$question->id)}}" class="btn btn-outline-primary">Edit</a>
-                                    </div>
+                                    @if(Auth::user() && Auth::user()->can('update',$question))
+                                        <div class="ml-auto">
+                                            <a href="{{route('question.edit',$question->id)}}" class="btn btn-outline-primary">Edit</a>
+                                        </div> 
                                     @endif
                                 </div>
                                 <p class="lead">

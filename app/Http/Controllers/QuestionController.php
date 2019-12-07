@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,10 +66,12 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        if(\Gate::allows('update-question',$question)){
-            return view('questions.edit',compact('question'));
-        }
-        abort(403);
+        // if(\Gate::allows('update-question',$question)){
+        //     return view('questions.edit',compact('question'));
+        // }
+        // abort(403);
+        $this->authorize('edit',$question);
+        return view('questions.edit',compact('question'));
     }
 
     /**
@@ -90,10 +96,13 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        if(\Gate::allows('delete-question',$question)){
-            $question->delete();
-            return redirect()->route('question.index')->with('success','Question deleted');
-        }
-        abort(403,"access denied");
+        // if(\Gate::allows('delete-question',$question)){
+        //     $question->delete();
+        //     return redirect()->route('question.index')->with('success','Question deleted');
+        // }
+        // abort(403,"access denied");
+        $this->authorize('delete',$question);
+        $question->delete();
+        return redirect()->route('question.index')->with('success','Question deleted');
     }
 }
