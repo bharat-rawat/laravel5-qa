@@ -15,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->inRandomOrder()->paginate(5);
+        $questions = Question::with('user')->latest()->paginate(5);
         return view('questions.index',compact('questions'));
     }
 
@@ -50,7 +50,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return view('questions.show',compact('question'));
     }
 
     /**
@@ -61,7 +61,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit',compact('question'));
     }
 
     /**
@@ -71,9 +71,10 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return redirect()->route('question.index')->with('success','Your question has been successfully updated');
     }
 
     /**
