@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\QuestionController;
+//use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,3 +22,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('question', 'QuestionController');
+//Route::show('question/{slug}','QuestionController@show')->name('question.show');

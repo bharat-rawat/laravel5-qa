@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h2>Question Details</h2>
+                        <h2>{{{$question->title}}}</h2>
                         <div class="ml-auto">
-                            <a href="{{route('question.create')}}" class="btn btn-outline-secondary">Ask Question</a>
+                            <a href="{{route('question.index')}}" class="btn btn-outline-secondary">All Questions</a>
                         </div>
                     </div>
                 </div>
@@ -32,17 +32,20 @@
                             <div class="media-body">
                                 <div class="d-flex align-items-center">
                                     <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
+                                    @if(Auth::user()->can('update-question',$question))
                                     <div class="ml-auto">
                                         <a href="{{route('question.edit',$question->id)}}" class="btn btn-outline-primary">Edit</a>
                                     </div>
+                                    @endif
                                 </div>
                                 <p class="lead">
                                     Created by 
                                     <a href="{{$question->user->url}}">{{$question->user->name}}</a>
                                     <small class="text-muted">{{$question->created_date}}</small>
                                 </p>
-                                {{$question->body}}
+                                {!!nl2br($question->body) !!} 
                             </div>
+                        
                             
                         </div>
                         
