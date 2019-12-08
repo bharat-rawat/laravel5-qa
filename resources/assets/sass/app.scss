@@ -48,3 +48,39 @@
 .margin-left{
   padding-left: 0;
 }
+.vote-control{
+  margin-right: 15px;
+  min-width: 60px;
+  
+  span, a{
+    display: block;
+    color: grey;
+    text-align: center;
+  }
+  span{
+    &.voteup-count{
+      font-size: 25px;
+    }
+    &.fav-count{
+      font-size: 15px;
+    }
+  }
+  a{
+    //cursor: pointer;
+    &.vote-up{
+      color: #636363;
+    }
+    
+    &.vote-down{
+      color: #9E9E9E;
+    }
+    
+    &.vote-fav,&.favourited{
+      color: $yellow-color;
+    }
+    &.vote-accepted{
+      color:green;
+    }
+  }
+  
+}
