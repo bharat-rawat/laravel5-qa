@@ -12,13 +12,24 @@
                         <a href="#" title="This answer is not useful" class="vote-down off">
                             <i class="fas fa-caret-down  fa-2x "></i> 
                         </a>
-                        <a href="#" title="Add this answer as the best answer" class="{{$answer->status}}">
+                        <a  title="Add this answer as the best answer" 
+                            class="{{$answer->status}}"
+                            onclick="event.preventDefault();document.getElementById('form-{{$answer->id}}').submit();">
                             <i class="fas fa-check" ></i>
                         </a>
+                    <form method="POST" action="{{route('answer.accepted',$answer->id)}}" id="form-{{$answer->id}}" style="display:none">
+                        @method('PUT')
+                        @csrf
+                    </form>
                 </div>
-                <div class="media-body">
-                   
-                    {!!nl2br($answer->body)!!}
+                @if ($answer->status=='vote-accepted')
+                        <?php $style="background:rgb(192, 240, 192);border-radius:10px;padding:10px"?>
+                    @else
+                        <?php $style="";?>
+                    @endif
+                <div class="media-body" style="{{$style}}">
+                        
+                    <span >{!!nl2br($answer->body)!!}</span>
                     
                     <br>
                     <div class="float-left mt-4">
