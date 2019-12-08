@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Question;
+use App\Answer;
 
 class User extends Authenticatable
 {
@@ -30,7 +31,9 @@ class User extends Authenticatable
     public function questions(){
         return $this->hasMany(Question::class);
     }
-
+    public function answers(){
+        return $this->hasMany(Answer::class);
+    }
     public function getUrlAttribute(){
         return "#";
     }
