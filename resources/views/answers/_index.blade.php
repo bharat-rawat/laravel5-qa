@@ -12,7 +12,7 @@
                         <a href="#" title="This answer is not useful" class="vote-down off">
                             <i class="fas fa-caret-down  fa-2x "></i> 
                         </a>
-                        <a href="#" title="Add this answer as the best answer" class="vote-accepted">
+                        <a href="#" title="Add this answer as the best answer" class="{{$answer->status}}">
                             <i class="fas fa-check" ></i>
                         </a>
                 </div>

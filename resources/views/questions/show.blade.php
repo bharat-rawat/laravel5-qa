@@ -25,7 +25,7 @@
                                 <i class="fas fa-caret-down  fa-2x "></i> 
                             </a>
                             <a href="#" title="Add this question to favrourite question" class="vote-fav favourited">
-                                <i class="fas fa-star" ></i>
+                                <i class="fas fa-star fa-2x" ></i>
                             </a>
                             <span class="fav-count">123</span>
                         </div>

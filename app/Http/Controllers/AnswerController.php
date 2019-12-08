@@ -68,6 +68,8 @@ class AnswerController extends Controller
     public function destroy(Question $question, Answer $answer)
     {
         $this->authorize('delete',$answer);
-        dd("noty yet");
+    
+        $answer->delete();
+        return back()->with('success','Your answer is deleted');
     }
 }
