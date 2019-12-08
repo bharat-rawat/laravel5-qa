@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('question', 'QuestionController');
 //Route::show('question/{slug}','QuestionController@show')->name('question.show');
+Route::resource('question.answer','AnswerController');
