@@ -11979,3 +11979,40 @@ a.text-dark:focus {
   padding-left: 0;
 }
 
+.vote-control {
+  margin-right: 15px;
+  min-width: 60px;
+}
+
+.vote-control span,
+.vote-control a {
+  display: block;
+  color: grey;
+  text-align: center;
+}
+
+.vote-control span.voteup-count {
+  font-size: 25px;
+}
+
+.vote-control span.fav-count {
+  font-size: 15px;
+}
+
+.vote-control a.vote-up {
+  color: #636363;
+}
+
+.vote-control a.vote-down {
+  color: #9E9E9E;
+}
+
+.vote-control a.vote-fav,
+.vote-control a.favourited {
+  color: #c4c003;
+}
+
+.vote-control a.vote-accepted {
+  color: green;
+}
+

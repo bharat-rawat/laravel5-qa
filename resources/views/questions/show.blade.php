@@ -13,19 +13,21 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="card-body">
                     <div class="media">
-                        <div class="d-flex flex-column counters">
-                            <div class="vote">
-                                <strong>{{$question->votes }} </strong>{{str_plural('vote',$question->votes)}}
-                            </div>
-                            <div class="status {{$question->status}}">
-                                <strong>{{$question->answers_count }} </strong>{{str_plural('answer',$question->answers_count)}}
-                            </div>
-                            <div class="view">
-                                {{$question->views ." ".str_plural('view',$question->views)}}
-                            </div>
+                        <div class="d-flex flex-column vote-control">
+                            <a href="#" title="This question is useful" class="vote-up">
+                                <i class="fas fa-caret-up fa-4x"></i>
+                            </a>
+                            <span class="voteup-count">123</span>
+                            <a href="#" title="This question is not useful" class="vote-down off">
+                                <i class="fas fa-caret-down  fa-4x "></i> 
+                            </a>
+                            <a href="#" title="Add this question to favrourite question" class="vote-fav favourited">
+                                <i class="fas fa-star fa-2x" ></i>
+                            </a>
+                            <span class="fav-count">123</span>
                         </div>
                         <div class="media-body">
                             <div class="d-flex align-items-center">
@@ -41,6 +43,7 @@
                                 <a href="{{$question->user->url}}">{{$question->user->name}}</a>
                                 <small class="text-muted">{{$question->created_date}}</small>
                             </p>
+                            <hr>
                             {!!nl2br($question->body) !!} 
                         </div>
                     </div>
@@ -58,6 +61,18 @@
                     <hr>
                     @foreach ($question->answers as $answer)
                         <div class="media">
+                            <div class="d-flex flex-column vote-control">
+                                    <a href="#" title="This answer is useful" class="vote-up">
+                                        <i class="fas fa-caret-up fa-4x"></i>
+                                    </a>
+                                    <span class="voteup-count">123</span>
+                                    <a href="#" title="This answer is not useful" class="vote-down off">
+                                        <i class="fas fa-caret-down  fa-4x "></i> 
+                                    </a>
+                                    <a href="#" title="Add this answer as the best answer" class="vote-accepted">
+                                        <i class="fas fa-check fa-2x" ></i>
+                                    </a>
+                            </div>
                             <div class="media-body">
                                 {!!nl2br($answer->body)!!}
                                 <br>
