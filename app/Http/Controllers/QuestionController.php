@@ -70,7 +70,7 @@ class QuestionController extends Controller
         //     return view('questions.edit',compact('question'));
         // }
         // abort(403);
-        $this->authorize('edit',$question);
+        $this->authorize('update',$question);
         return view('questions.edit',compact('question'));
     }
 
