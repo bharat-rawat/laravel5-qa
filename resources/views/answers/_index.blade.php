@@ -33,10 +33,10 @@
                     
                     <br>
                     <div class="float-left mt-4">
-                        @if(Auth::user()->can('update',$answer))
+                        @if(Auth::user() && Auth::user()->can('update',$answer))
                             <a href="{{route('question.answer.edit',[$question->id,$answer->id])}}" class="btn btn-outline-secondary btn-sm">Update</a>
                         @endif
-                        @if(Auth::user()->can('delete',$answer))
+                        @if(Auth::user() && Auth::user()->can('delete',$answer))
                             <form action="{{route('question.answer.destroy',[$question->id,$answer->id])}}" method="POST" class="form-delete">
                 
                                 @method('delete')

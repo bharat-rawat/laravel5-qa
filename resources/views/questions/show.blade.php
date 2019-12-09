@@ -59,9 +59,27 @@
                                             'answerCount'=>$question->answers->count()])
                
             </div>
-            <div class="card mt-3">
-                @include('answers.create');
-            </div>
+            @if (Auth::id())
+                <div class="card mt-3">
+                    @include('answers.create');
+                </div>
+            @else
+                <div class="card  mt-2" style="text-align:center;background:palegoldenrod;margin:0 auto;">
+                    <div class="card-header" style="background:coral;border:peru 1px solid;border-radius:10px;width:50%;margin:10px auto">
+                        <strong>Would you like to share your answer?</strong>
+                    </div>
+                    <div class="card-body" style="text-align:center">
+                        
+                        <a href="{{url('/login')}}" class="btn btn-outline-success">Are you a member? Login here</a>
+                        
+                        <a href="{{url('/register')}}" class="btn btn-outline-primary ">It is never too late to register here</a>
+                    </div>
+                    {{-- <div class="card-footer text-muted">
+                        Footer
+                    </div> --}}
+                </div>
+                
+            @endif
         </div>
     </div>
 </div>
