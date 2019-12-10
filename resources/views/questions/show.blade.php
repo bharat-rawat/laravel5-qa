@@ -82,7 +82,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card mt-3">
-                @include('answers._index',['answers'=>$question->answers,
+                @include('answers._index',['answers'=>$question->answers()->orderBy('votes_count','desc')->get(),
                                             'answerCount'=>$question->answers_count])
                
             </div>
