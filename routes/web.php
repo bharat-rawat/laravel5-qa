@@ -40,3 +40,5 @@ Route::put('answer/{id}', function ($id) {
 
 Route::post('/question/{question}/favourite', 'FavouriteController@store')->name('question.favourite');
 Route::delete('/question/{question}/favourite', 'FavouriteController@destroy')->name('question.unfavourite');
+Route::post('/question/{question}/vote','VoteController');
+Route::post('/answer/{answer}/vote','VoteAnswerController');

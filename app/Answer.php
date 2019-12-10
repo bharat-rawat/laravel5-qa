@@ -35,5 +35,16 @@ class Answer extends Model
             }
         });
     }
+
+    public function votes(){
+        return $this->morphToMany(User::class,'votable');
+
+    }
+    public function voteUp(){
+        return $this->votes()->wherePivot('vote',1);
+    }
+    public function voteDown(){
+        return $this->votes()->wherePivot('vote',-1);
+    }
     
 }

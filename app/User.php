@@ -38,6 +38,48 @@ class User extends Authenticatable
         return $this->belongsToMany(Question::class,'favourites')->withTimestamps();
     }
 
+
+    public function voteQuestions(){
+        return $this->morphedByMany(Question::class,'votable');
+    }
+    public function voteAnswers(){
+        return $this->morphedByMany(Answer::class,'votable');
+    }
+
+public function voteQuestion(Question $question,$vote){
+    // check if user has voted or not
+    $votesQuestions = $this->voteQuestions();
+    if($votesQuestions->where('votable_id',$question->id)->exists()){
+        $votesQuestions->updateExistingPivot($question,['vote'=>$vote]);
+    }else{
+        $votesQuestions->attach($question,['vote'=>$vote]);
+    }
+    // in order to calculate the votes_count first refresh the relationship
+    $this->load('voteQuestions');
+
+    $voteDown = (int) $question->downVote()->sum('vote');
+    $voteUp = (int) $question->upVote()->sum('vote');
+
+    $voteTotal = $voteDown + $voteUp;
+    $question->votes_count = $voteTotal;
+    $question->save();
+}
+public function voteAnswer(Answer $answer,$vote){
+    $voteAnswer = $this->voteAnswers();
+    if($voteAnswer->where('votable_id',$answer->id)->exists()){
+        $voteAnswer->updateExistingPivot($answer,['vote'=>$vote]);
+    }else{
+        $voteAnswer->attach($answer,['vote'=>$vote]);
+    }
+    $this->load('voteAnswers');
+    $voteDown = (int) $answer->voteDown()->sum('vote');
+    $voteUp = (int) $answer->voteUp()->sum('vote');
+    $answer->votes_count = $voteDown + $voteUp;
+    $answer->save();
+
+}
+
+
     public function getUrlAttribute(){
         return "#";
     }

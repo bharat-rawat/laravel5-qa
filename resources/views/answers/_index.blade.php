@@ -5,13 +5,30 @@
         @foreach ($answers as $answer)
             <div class="media">
                 <div class="d-flex flex-column vote-control">
-                        <a href="#" title="This answer is useful" class="vote-up">
+                        <a  title="This answer is useful" 
+                            class="vote-up"
+                            onclick="event.preventDefault();document.getElementById('ansUp-{{$answer->id}}').submit()"
+                            >
                             <i class="fas fa-caret-up fa-2x"></i>
                         </a>
-                        <span class="voteup-count">123</span>
-                        <a href="#" title="This answer is not useful" class="vote-down off">
+                        <span class="voteup-count">{{$answer->votes_count}}</span>
+                        <form action="/answer/{{$answer->id}}/vote"
+                                method="POST" 
+                                id="ansUp-{{$answer->id}}" style="display:none">
+                                @csrf 
+                                <input type="hidden" name="vote" value="1">
+                        </form>
+                        <a  title="This answer is not useful" 
+                            class="vote-down off"
+                            onclick="event.preventDefault();document.getElementById('ansDown-{{$answer->id}}').submit()">
                             <i class="fas fa-caret-down  fa-2x "></i> 
                         </a>
+                        <form action="/answer/{{$answer->id}}/vote"
+                            method="POST" 
+                            id="ansDown-{{$answer->id}}" style="display:none">
+                            @csrf 
+                            <input type="hidden" name="vote" value="-1">
+                        </form>
                         <a  title="Add this answer as the best answer" 
                             class="{{$answer->status}}"
                             onclick="event.preventDefault();document.getElementById('form-{{$answer->id}}').submit();">
