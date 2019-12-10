@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    {{-- it would be a good idea to place ab anchor tag here to view all question --}}
                 </div>
             </div>
         </div>
