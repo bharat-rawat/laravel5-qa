@@ -46,7 +46,7 @@
                     @endif
                 <div class="media-body" style="{{$style}}">
                         
-                    <span >{!!nl2br($answer->body)!!}</span>
+                    <span >{!! clean(nl2br($answer->body))!!}</span>
                     
                     <br>
                     <div class="float-left mt-4">
