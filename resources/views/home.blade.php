@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <a href="{{route('question.index')}}" class="btn btn-primary btn-sm" style="text-decoration:none;">Browse Questions</a>
                 </div>
             </div>
         </div>

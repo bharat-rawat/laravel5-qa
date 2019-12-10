@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h2>{{{$question->title}}}</h2>
-                        <div class="col-md-2">
+                        <div class="ml-auto">
                             <a href="{{route('question.index')}}" class="btn btn-outline-secondary">All Questions</a>
                         </div>
                     </div>
@@ -24,10 +24,19 @@
                             <a href="#" title="This question is not useful" class="vote-down off">
                                 <i class="fas fa-caret-down  fa-2x "></i> 
                             </a>
-                            <a href="#" title="Add this question to favrourite question" class="vote-fav favourited">
+                            <a title="Add this question to favrourite question" 
+                                
+                               class="vote-fav {{\Auth::guest()?'off': ($question->is_favourited?'favourited':'')}}"
+                               onclick="event.preventDefault();document.getElementById('favourite-{{$question->id}}').submit()">
                                 <i class="fas fa-star fa-2x" ></i>
                             </a>
-                            <span class="fav-count">123</span>
+                        <form action="/question/{{$question->id}}/favourite" method="POST" style="display:none" id = "favourite-{{$question->id}}">
+                            @csrf
+                            @if($question->is_favourited)
+                             @method('DELETE')
+                            @endif 
+                            </form>
+                            <span class="fav-count">{{$question->favourite_count}}</span>
                         </div>
                         <div class="media-body">
                             <div class="d-flex align-items-center">
@@ -39,7 +48,7 @@
                                 @endif
                             </div>
                             <p class="lead">
-                                Created by 
+                                Created by
                                 <a href="{{$question->user->url}}">{{$question->user->name}}</a>
                                 <small class="text-muted">{{$question->created_date}}</small>
                             </p>
@@ -56,7 +65,7 @@
         <div class="col-md-12">
             <div class="card mt-3">
                 @include('answers._index',['answers'=>$question->answers,
-                                            'answerCount'=>$question->answers->count()])
+                                            'answerCount'=>$question->answers_count])
                
             </div>
             @if (Auth::id())

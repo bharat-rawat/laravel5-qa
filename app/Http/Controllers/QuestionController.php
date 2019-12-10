@@ -102,6 +102,7 @@ class QuestionController extends Controller
         // }
         // abort(403,"access denied");
         $this->authorize('delete',$question);
+        $question->favourites()->detach(auth()->id());
         $question->delete();
         return redirect()->route('question.index')->with('success','Question deleted');
     }

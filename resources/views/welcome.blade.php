@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <a href="{{route('question.index')}}" style="text-decoration:none;">Browse Questions</a>
                 </div>
 
                 <div class="links">

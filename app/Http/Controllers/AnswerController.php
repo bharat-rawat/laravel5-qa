@@ -55,6 +55,7 @@ class AnswerController extends Controller
      */
     public function update(Request $request, Question $question, Answer $answer)
     {
+        $this->authorize('update',$answer);
         $request->validate([
             'body'=>'required',
         ]);

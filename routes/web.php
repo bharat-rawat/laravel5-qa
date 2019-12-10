@@ -29,10 +29,14 @@ Route::resource('question.answer','AnswerController');
 Route::put('answer/{id}', function ($id) {
     $answer = App\Answer::find($id);
     $question = $answer->question;
-    if(Auth::id()===$question->user_id){
+    if(Auth::user()->id==$question->user_id){
+    
         $question->best_answer_id = $id;
         $question->save();
         return back()->with('success','Best answer selected');
     }
     return back()->with('danger','You are not the originator of this question');
 })->name('answer.accepted');
+
+Route::post('/question/{question}/favourite', 'FavouriteController@store')->name('question.favourite');
+Route::delete('/question/{question}/favourite', 'FavouriteController@destroy')->name('question.unfavourite');

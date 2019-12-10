@@ -63,6 +63,7 @@
     }
     &.fav-count{
       font-size: 15px;
+      color: $yellow-color;
     }
   }
   a{
@@ -75,8 +76,13 @@
       color: #9E9E9E;
     }
     
-    &.vote-fav,&.favourited{
-      color: $yellow-color;
+    &.vote-fav{
+      &.favourited{
+        color: $yellow-color;
+      }
+      &.off{
+        color:#9E9E9E;
+      }
     }
     &.vote-accepted{
       color:green;

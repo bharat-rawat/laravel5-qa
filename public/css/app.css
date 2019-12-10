@@ -11997,6 +11997,7 @@ a.text-dark:focus {
 
 .vote-control span.fav-count {
   font-size: 15px;
+  color: #c4c003;
 }
 
 .vote-control a.vote-up {
@@ -12007,9 +12008,12 @@ a.text-dark:focus {
   color: #9E9E9E;
 }
 
-.vote-control a.vote-fav,
-.vote-control a.favourited {
+.vote-control a.vote-fav.favourited {
   color: #c4c003;
+}
+
+.vote-control a.vote-fav.off {
+  color: #9E9E9E;
 }
 
 .vote-control a.vote-accepted {
