@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    use VotableTrait;
     protected $fillable=['body','user_id'];
     public function user(){
         return $this->belongsTo(User::class);
@@ -34,17 +35,6 @@ class Answer extends Model
                 $question->save();
             }
         });
-    }
-
-    public function votes(){
-        return $this->morphToMany(User::class,'votable');
-
-    }
-    public function voteUp(){
-        return $this->votes()->wherePivot('vote',1);
-    }
-    public function voteDown(){
-        return $this->votes()->wherePivot('vote',-1);
     }
     
 }

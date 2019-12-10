@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h2>{{{$question->title}}}</h2>
+                        <h2 style="max-width: 80%">{{{$question->title}}}</h2>
                         <div class="ml-auto">
                             <a href="{{route('question.index')}}" class="btn btn-outline-secondary">All Questions</a>
                         </div>

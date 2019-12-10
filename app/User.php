@@ -72,8 +72,8 @@ public function voteAnswer(Answer $answer,$vote){
         $voteAnswer->attach($answer,['vote'=>$vote]);
     }
     $this->load('voteAnswers');
-    $voteDown = (int) $answer->voteDown()->sum('vote');
-    $voteUp = (int) $answer->voteUp()->sum('vote');
+    $voteDown = (int) $answer->downVote()->sum('vote');
+    $voteUp = (int) $answer->upVote()->sum('vote');
     $answer->votes_count = $voteDown + $voteUp;
     $answer->save();
 
