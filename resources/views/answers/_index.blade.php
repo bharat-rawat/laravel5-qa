@@ -7,7 +7,8 @@
         <hr>
         @foreach ($answers as $answer)
             <div class="media">
-                <div class="d-flex flex-column vote-control">
+                @include('shared._vote',['model'=>$answer])
+                {{-- <div class="d-flex flex-column vote-control">
                         <a  title="This answer is useful" 
                             class="vote-up"
                             onclick="event.preventDefault();document.getElementById('ansUp-{{$answer->id}}').submit()"
@@ -32,16 +33,20 @@
                             @csrf 
                             <input type="hidden" name="vote" value="-1">
                         </form>
-                        <a  title="Add this answer as the best answer" 
-                            class="{{$answer->status}}"
-                            onclick="event.preventDefault();document.getElementById('form-{{$answer->id}}').submit();">
-                            <i class="fas fa-check" ></i>
-                        </a>
-                    <form method="POST" action="{{route('answer.accepted',$answer->id)}}" id="form-{{$answer->id}}" style="display:none">
-                        @method('PUT')
-                        @csrf
-                    </form>
-                </div>
+                            <a  title="Add this answer as the best answer" 
+                                class="{{$answer->status}}"
+                                onclick="event.preventDefault();document.getElementById('form-{{$answer->id}}').submit();">
+                                <i class="fas fa-check" ></i>
+                            </a>
+                            <form method="POST" action="{{route('answer.accepted',$answer->id)}}" id="form-{{$answer->id}}" style="display:none">
+                                @method('PUT')
+                                @csrf
+                            </form>
+                </div> --}}
+
+
+
+
                 @if ($answer->status=='vote-accepted')
                         <?php $style="background:rgb(192, 240, 192);border-radius:10px;padding:10px"?>
                     @else
@@ -66,13 +71,9 @@
                         @endif
                     </div>
                     <div class="float-right mt-2">
-                    <p class="text-muted">Answered {{ $answer->created_date}}</p>
-                        <div class="media">
-                            <a href="{{$answer->user->url}}" class="pr-2"><img src="{{$answer->user->avatar}}" alt="img"></a>
-                            <div class="media-body">
-                                <a href="{{$answer->user->url}}">{{$answer->user->name}}<a>
-                            </div>
-                        </div>
+                        @include('shared._author',[
+                            'model'=>$answer,
+                            'label'=>'Answered'])
                     </div>
                 </div>
             </div>
