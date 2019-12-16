@@ -71,9 +71,10 @@
                         @endif
                     </div>
                     <div class="float-right mt-2">
-                        @include('shared._author',[
+                        {{-- @include('shared._author',[
                             'model'=>$answer,
-                            'label'=>'Answered'])
+                            'label'=>'Answered']) --}}
+                        <user-info :model="{{$answer}}" label="Answered"></user-info>
                     </div>
                 </div>
             </div>

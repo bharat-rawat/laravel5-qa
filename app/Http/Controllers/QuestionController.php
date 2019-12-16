@@ -56,6 +56,7 @@ class QuestionController extends Controller
     {
         $question->increment('views',1);
        // $answers = $question->answers()->get();
+       //$question = Question::with(['user','answers.user'])->where('id',$quest->id)->first();
         return view('questions.show',compact('question'));
     }
 
