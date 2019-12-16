@@ -17,7 +17,7 @@
                 <div class="card-body">
                     @include('layouts._messages')
                         @foreach($questions as $question)
-                        <div class="media">
+                        <div class="media sel">
                             <div class="d-flex flex-column counters">
                                 <div class="vote">
                                     <strong>{{$question->votes_count}} </strong>{{str_plural('vote',$question->votes_count)}}
@@ -80,5 +80,8 @@
             @endguest
         </div>
     </div>
+</div>
+<div style="position:fixed;top:50%;right:0;width:100px;height:50px;z-index:10">
+    <a href="{{route('question.create')}}" class="btn btn-outline-secondary">Ask Question</a>
 </div>
 @endsection
