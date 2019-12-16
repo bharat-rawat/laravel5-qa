@@ -66,7 +66,7 @@
                         @endif
                     </div>
                     <div class="float-right mt-2">
-                    <p class="text-muted">{{$answer->created_date}}</p>
+                    <p class="text-muted">Answered {{ $answer->created_date}}</p>
                         <div class="media">
                             <a href="{{$answer->user->url}}" class="pr-2"><img src="{{$answer->user->avatar}}" alt="img"></a>
                             <div class="media-body">
