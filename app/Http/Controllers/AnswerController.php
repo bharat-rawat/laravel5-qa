@@ -60,6 +60,12 @@ class AnswerController extends Controller
             'body'=>'required',
         ]);
         $answer->update($request->all());
+        if($request->expectsJson()){
+            return response()->json([
+                'message' => 'Answer Updated',
+                'body' => $answer->body,
+            ]);
+        }
         return redirect()->route('question.show',$question->id)->with('success','Answer update');
     }
 

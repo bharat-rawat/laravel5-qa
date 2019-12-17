@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Parsedown;
 
 class Answer extends Model
 {
     use VotableTrait;
     protected $fillable=['body','user_id'];
-    protected $appends=['created_date'];
+    protected $appends=['created_date','body_html'];
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -21,6 +22,9 @@ class Answer extends Model
     }
     public function getStatusAttribute(){
         return $this->id === $this->question->best_answer_id?'vote-accepted':'';
+    }
+    public function getBodyHtmlAttribute(){
+        return nl2br($this->body);
     }
     public static function boot(){
         parent::boot();

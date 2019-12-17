@@ -12023,3 +12023,7 @@ a.text-dark:focus {
   color: green;
 }
 
+[v-cloak] {
+  display: none;
+}
+
