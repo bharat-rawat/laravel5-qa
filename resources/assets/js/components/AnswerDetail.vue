@@ -30,11 +30,17 @@
                     this.editing=false;
                 })
                 .catch(err =>{
-                    console.log('something wrong');
+                    console.log(err.response);
                     
                 });
             },
+            
         },
+        computed:{
+                isValid (){
+                    return (this.body.length < 10);
+                }
+            }
     }
     
 </script>

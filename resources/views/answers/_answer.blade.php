@@ -12,9 +12,9 @@
                 <div class="form-group">
                     <label for="ans-body">Update your answer here</label>
                     <textarea v-model="body" rows="10" 
-                        class="form-control"></textarea>
+                        class="form-control" required></textarea>
                 </div> 
-                <button class="btn btn-primary">Edit</button>    
+                <button class="btn btn-primary" :disabled="isValid">Edit</button>    
                 <button v-on:click="cancel" class="btn btn-secondary" type="button">Cancel</button>    
                 
             </form> 

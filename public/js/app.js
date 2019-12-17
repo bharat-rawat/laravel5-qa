@@ -14495,7 +14495,7 @@ window.Vue = __webpack_require__(40);
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('user-info', __webpack_require__(44));
-Vue.component('answer-detail', __webpack_require__(54));
+Vue.component('answer-detail', __webpack_require__(47));
 
 var app = new Vue({
   el: '#app'
@@ -53221,25 +53221,13 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */,
-/* 48 */,
-/* 49 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(55)
+var __vue_script__ = __webpack_require__(48)
 /* template */
 var __vue_template__ = null
 /* template functional */
@@ -53280,7 +53268,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53318,11 +53306,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.body_html = res.data.body;
                 _this.editing = false;
             }).catch(function (err) {
-                console.log('something wrong');
+                console.log(err.response);
             });
+        }
+    },
+    computed: {
+        isValid: function isValid() {
+            return this.body.length < 10;
         }
     }
 });
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
